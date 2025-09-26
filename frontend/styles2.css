@@ -48,7 +48,7 @@ body {
         color: #000;
     }
 
-    /* Optional: hover effect for rows */
+    
     tbody tr:hover {
         background-color: rgba(255, 184, 66, 0.2);
     }

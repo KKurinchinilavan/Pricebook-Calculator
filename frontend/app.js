@@ -1,4 +1,3 @@
-// Declare globally so both event listeners and calculation function can access
 let currentCountryRecord = null;
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -38,9 +37,9 @@ window.addEventListener("DOMContentLoaded", () => {
       if (!response.ok) throw new Error("Failed to fetch country data");
 
       const countryData = await response.json();
-      currentCountryRecord = countryData[0]; // Store globally for cost calculation
+      currentCountryRecord = countryData[0]; 
 
-      // Update the Region textbox
+      
       regionTextbox.value = currentCountryRecord.Region;
 
     } catch (err) {
@@ -50,7 +49,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   loadCountries();
 
-  // Optional: Add a button listener to calculate cost
+  
   const calculateBtn = document.getElementById("calculateBtn");
   if (calculateBtn) {
     calculateBtn.addEventListener("click", yearCostCalculation);
@@ -93,13 +92,13 @@ function yearCostCalculation() {
     return 0;
   }
 
-  // Convert "$48,000.00" → 48000
+  // Convertion
   const priceNumber = parseFloat(priceString.replace(/[$,]/g, ""));
   const totalCost = priceNumber * numberOfYears;
 
   console.log("Total yearly cost:", totalCost);
 
-  // Optional: display in a textbox if exists
+  
   const resultBox = document.getElementById("totalCost");
   if (resultBox) resultBox.value = totalCost;
 
@@ -142,7 +141,7 @@ function dailyCostCalculation() {
 
   console.log("Total daily cost:", totalCost);
 
-  // Optional: display in a textbox if exists
+  
   const resultBox = document.getElementById("dailyTotalCost");
   if (resultBox) resultBox.value = totalCost;
 
@@ -229,7 +228,7 @@ function projectCostCalculation() {
 
   console.log("Total project cost:", totalCost);
 
-  // Optional: display in a textbox if exists
+  
   const resultBox = document.getElementById("projectTotalCost");
   if (resultBox) resultBox.value = totalCost;
 
@@ -258,5 +257,5 @@ function calculateAndRedirect() {
 }
 
 
-// Expose globally to call from console if needed
+
 window.yearCostCalculation = yearCostCalculation;
