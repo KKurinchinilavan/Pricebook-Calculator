@@ -1,3 +1,5 @@
+const API_BASE = "https://pricebook-calculator.onrender.com";
+
 let currentCountryRecord = null;
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -7,7 +9,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // Load countries into dropdown
   async function loadCountries() {
     try {
-      const response = await fetch("http://localhost:5000/countries");
+      const response = await fetch(`${API_BASE}/countries`);
       if (!response.ok) throw new Error("Failed to fetch countries");
 
       const countries = await response.json();
@@ -33,7 +35,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const selectedCountry = this.value;
 
     try {
-      const response = await fetch(`http://localhost:5000/country/${encodeURIComponent(selectedCountry)}`);
+      const response = await fetch(`${API_BASE}/country/${encodeURIComponent(selectedCountry)}`);
       if (!response.ok) throw new Error("Failed to fetch country data");
 
       const countryData = await response.json();
