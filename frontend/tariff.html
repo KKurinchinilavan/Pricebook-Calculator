@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cost Summary</title>
+<link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+<div>
+    <h1>Cost Summary</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Cost Type</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Yearly Cost</td>
+                <td id="yearlyCost"></td>
+            </tr>
+            <tr>
+                <td>Daily Cost</td>
+                <td id="dailyCost"></td>
+            </tr>
+            <tr>
+                <td>Dispatch Cost</td>
+                <td id="dispatchCost"></td>
+            </tr>
+            <tr>
+                <td>Project Cost</td>
+                <td id="projectCost"></td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td id="totalCost"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // Read costs from sessionStorage
+    const yearlyCost = parseFloat(sessionStorage.getItem("yearlyCost")) || 0;
+    const dailyCost = parseFloat(sessionStorage.getItem("dailyCost")) || 0;
+    const dispatchCost = parseFloat(sessionStorage.getItem("dispatchCost")) || 0;
+    const projectCost = parseFloat(sessionStorage.getItem("projectCost")) || 0;
+
+    // Calculate total
+    const totalCost = yearlyCost + dailyCost + dispatchCost + projectCost;
+
+    // Display costs in table
+    document.getElementById("yearlyCost").textContent = yearlyCost.toFixed(2);
+    document.getElementById("dailyCost").textContent = dailyCost.toFixed(2);
+    document.getElementById("dispatchCost").textContent = dispatchCost.toFixed(2);
+    document.getElementById("projectCost").textContent = projectCost.toFixed(2);
+    document.getElementById("totalCost").textContent = totalCost.toFixed(2);
+</script>
+</body>
+</html>

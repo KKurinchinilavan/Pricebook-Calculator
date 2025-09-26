@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Calculator</title>
+
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <form id="myForm">
+
+        <div class="calculator-container">
+            <h1>Price Calculator</h1>
+
+            <!-- Country & Region Inline -->
+            <div class="country-region">
+                <div class="left-side">
+                    <label for="country">Country:</label>
+                    <select id="countrySelect" class="country">
+                        <option value="" disabled selected>-- Select Country --</option>
+                    </select>
+
+                    <label for="regionTextbox">Region:</label>
+                    <input type="text" id="regionTextbox" class="inputs" readonly>
+                </div>
+
+                <div class="right-side">
+                    <button type="button" class="reset-btn" onclick="resetForm()">Reset</button>
+                    <button type="button" class="calc-btn" onclick="calculateAndRedirect()">Calculate total amount</button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 4 Boxes Grid -->
+            <div class="container">
+                <div class="yearly-box">
+                    <h2>Yearly</h2>
+                    <div class="form-group">
+                        <label>Service Level</label>
+                        <select class="select">
+                            <option value="" disabled selected>-- Select Level --</option>
+                            <option value="L1">Level 1</option>
+                            <option value="L2">Level 2</option>
+                            <option value="L3">Level 3</option>
+                            <option value="L4">Level 4</option>
+                            <option value="L5">Level 5</option>
+                        </select>
+                    </div>
+                    <div class="radio-group">
+                        <input type="radio" id="With-backfill" name="yearlyOption1" value="yes">
+                        <label for="With-backfill">With backfill</label>
+                        <input type="radio" id="Without_backfill" name="yearlyOption1" value="no">
+                        <label for="Without_backfill">Without backfill</label>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" class="inputs" placeholder="Enter number of years">
+                    </div>
+                </div>
+
+                <div class="daily-box">
+                    <h2>Day Visit</h2>
+
+                    <div class="dispatch-form">
+                        <div class="dispatch-elements">
+                            <label for="fullday">Fullday</label>
+                            <label for="halfday">Halfday</label>
+                        </div>
+
+                        <div class="dispatch-elements">
+                            <select class="select" id="fulldaySelect">
+                                <option value="" disabled selected>-- Select Service Level --</option>
+                                <option value="L1">Level 1</option>
+                                <option value="L2">Level 2</option>
+                                <option value="L3">Level 3</option>
+                            </select>
+
+                            <select class="select" id="halfdaySelect">
+                                <option value="" disabled selected>-- Select Service Level --</option>
+                                <option value="L1">Level 1</option>
+                                <option value="L2">Level 2</option>
+                                <option value="L3">Level 3</option>
+                            </select>
+
+
+                        </div>
+
+                        <div class="dispatch-elements">
+                            <input type="text" class="inputs" id="numberOfFulldays" placeholder="Enter number of days">
+                            <input type="text" class="inputs" id="numberOfHalfdays" placeholder="Enter number of days">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dispatch-box">
+                    <h2>Dispatch</h2>
+
+                    <div class="dispatch-form">
+                        <div class="dispatch-elements">
+                            <label id="incident">Incident</label>
+                            <label id="imac">IMAC</label>
+                        </div>
+
+                        <div class="dispatch-elements">
+                            <select class="incident-select" id="incidentSelect">
+                                <option value="" disabled selected>-- Select type --</option>
+                                <option value="L1">9x5x4 Incident Response</option>
+                                <option value="L2">24x7x4 Response to site</option>
+                                <option value="L3">SBD Business Day Resolution to site</option>
+                                <option value="L4">NBD Resolution to site</option>
+                                <option value="L5">2BD Resolution to site</option>
+                                <option value="L6">3BD Resolution to site</option>
+                            </select>
+
+                            <select class="imac-select" id="imacSelect">
+                                <option value="" disabled selected>-- Select type --</option>
+                                <option value="L1">2 BD Resolution to site</option>
+                                <option value="L2">3 BD Resolution to site</option>
+                                <option value="L3">4 BD Resolution to site</option>
+                            </select>
+                        </div>
+
+                        <div class="dispatch-elements">
+                            <input type="text" class="inputs" id="incidentDispatchHours"
+                                placeholder="Enter dispatch hours">
+                        </div>
+
+                        <div class="dispatch-elements">
+                            <input type="text" class="inputs" id="AdditionalHoursForIncident"
+                                placeholder="Additional hours">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="project-box">
+                    <h2>Project</h2>
+
+                    <div class="dispatch-form">
+                        <div class="dispatch-elements">
+                            <label id="shortTermProject">Short term project</label>
+                            <label id="longTermProject">Long term project</label>
+                        </div>
+
+                        <div class="dispatch-elements">
+                            <select class="select" id="shortTermSelect">
+                                <option value="" disabled selected>-- Select Level --</option>
+                                <option value="L1">Level 1</option>
+                                <option value="L2">Level 2</option>
+                                <option value="L3">Level 3</option>
+                                <option value="L4">Level 4</option>
+                                <option value="L5">Level 5</option>
+                            </select>
+
+                            <select class="select" id="longTermSelect">
+                                <option value="" disabled selected>-- Select Level --</option>
+                                <option value="L1">Level 1</option>
+                                <option value="L2">Level 2</option>
+                                <option value="L3">Level 3</option>
+                                <option value="L4">Level 4</option>
+                                <option value="L5">Level 5</option>
+                            </select>
+                        </div>
+
+                        <div class="dispatch-elements">
+                            <input type="text" class="inputs" id="shortTermMonths" placeholder="Number of months">
+                            <input type="text" class="inputs" id="longTermMonths" placeholder="Number of months">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </form>
+    <script src="app.js" defer></script>
+</body>
+
+</html>
